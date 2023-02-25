@@ -24,7 +24,7 @@ const Navbar = ({ className }: NavbarProps) => {
     <header
       className={`fixed transition-all duration-500 ${
         isScrolled ? "-translate-y-full" : "translate-y-0"
-      } bg-gray-900 px-4 py-3 md:flex md:justify-between md:justify-items-center md:px-52 ${className}`}
+      } bg-gray-900 px-4 py-3 shadow-xl md:flex md:justify-between md:justify-items-center md:px-52 ${className}`}
       style={{ position: "fixed", top: 0, width: "100%", zIndex: 1 }}
     >
       <div className=" flex items-center justify-between ">
@@ -68,7 +68,7 @@ const Navbar = ({ className }: NavbarProps) => {
         </div>
       </div>
       <div
-        className={`px-2 pt-2 pb-2 ${
+        className={`px-2 pt-2 pb-2  ${
           isOpen ? "block" : "hidden"
         } md:flex md:items-center`}
       >
