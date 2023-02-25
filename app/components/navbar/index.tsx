@@ -1,17 +1,38 @@
 import { Link } from "@remix-run/react";
 import logo from "~/assets/png/db-logo.png";
 import NavabarLink from "./NavbarLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Navbar = () => {
+type NavbarProps = {
+  className?: string;
+};
+
+const Navbar = ({ className }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const threshold = 100;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > threshold);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="bg-gray-900 px-4 py-3 md:flex md:justify-between md:justify-items-center md:px-52">
-      <div className="flex items-center justify-between ">
+    <header
+      className={`fixed transition-all duration-500 ${
+        isScrolled ? "-translate-y-full" : "translate-y-0"
+      } bg-gray-900 px-4 py-3 md:flex md:justify-between md:justify-items-center md:px-52 ${className}`}
+      style={{ position: "fixed", top: 0, width: "100%", zIndex: 1 }}
+    >
+      <div className=" flex items-center justify-between ">
         <div className="">
           <a href="/">
             <img
-              className="h-20 w-auto"
+              className="mr-20 h-20 w-auto"
               src={logo}
               alt="Dobu Martial Arts Gym"
             />
@@ -48,7 +69,7 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`px-2 pt-2 pb-4 ${
+        className={`px-2 pt-2 pb-2 ${
           isOpen ? "block" : "hidden"
         } md:flex md:items-center`}
       >
