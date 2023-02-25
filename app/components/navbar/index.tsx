@@ -1,4 +1,3 @@
-import { Link } from "@remix-run/react";
 import logo from "~/assets/png/db-logo.png";
 import NavabarLink from "./NavbarLink";
 import { useState, useEffect } from "react";
@@ -29,7 +28,7 @@ const Navbar = ({ className }: NavbarProps) => {
       style={{ position: "fixed", top: 0, width: "100%", zIndex: 1 }}
     >
       <div className=" flex items-center justify-between ">
-        <div className="">
+        <div>
           <a href="/">
             <img
               className="mr-20 h-20 w-auto"
