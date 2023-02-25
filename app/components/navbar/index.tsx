@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-import logo from "~/assets/svg/dobu-logo.svg";
+import logo from "~/assets/png/db-logo.png";
 import NavabarLink from "./NavbarLink";
 import { useState } from "react";
 
@@ -11,13 +11,13 @@ const Navbar = () => {
         <div className="">
           <a href="/">
             <img
-              className="h-14 w-auto"
+              className="h-20 w-auto"
               src={logo}
               alt="Dobu Martial Arts Gym"
             />
           </a>
         </div>
-        <div className="pl-28 md:hidden">
+        <div className=" md:hidden">
           <NavabarLink
             url="/membership"
             classname="border rounded-xl w-24 text-center"
