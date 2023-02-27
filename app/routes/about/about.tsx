@@ -5,9 +5,6 @@ export default function About() {
     <>
       <html>
         <body className="h-auto w-full bg-gray-800">
-          <div>
-            <Navbar />
-          </div>
           <div className="h-full">
             <div
               className="grid border-spacing-10 items-center justify-center

@@ -73,7 +73,7 @@ const Navbar = ({ className }: NavbarProps) => {
         } md:flex md:items-center`}
       >
         <NavabarLink url="/">Home</NavabarLink>
-        <NavabarLink url="/about">About us</NavabarLink>
+        <NavabarLink url="/about/about">About us</NavabarLink>
         <NavabarLink url="/classes">Classes</NavabarLink>
         <NavabarLink
           url="/membership"

@@ -7,9 +7,6 @@ export default function Index() {
       <html>
         <body className="h-auto w-full bg-gray-800">
           <div>
-            <Navbar className="" />
-          </div>
-          <div>
             <Test />
           </div>
         </body>

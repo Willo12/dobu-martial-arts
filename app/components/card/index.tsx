@@ -1,4 +1,5 @@
 import instructorGraphic from "~/assets/jpg/martial-arts-instructor.jpg";
+import secondInstructorGraphic from "~/assets/jpg/second-instructor.jpg";
 
 type CardProps = {
   fName: string;
@@ -17,6 +18,7 @@ const Card = ({
   price,
   className,
 }: CardProps) => {
+  const secndInstruct = secondInstructorGraphic;
   return (
     <div className={`mt-10 mb-10 flex shadow-2xl${className}`}>
       <div className="w-64 rounded-md bg-gray-100 md:flex md:w-96 md:items-center md:justify-center">
