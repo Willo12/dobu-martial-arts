@@ -1,0 +1,20 @@
+.blur0 {
+  filter: blur(0);
+}
+
+.blurSm {
+  filter: blur(4px);
+}
+
+.animateBlur {
+  animation: blurAnimation 2s linear forwards;
+}
+
+@keyframes blurAnimation {
+  from {
+    filter: blur(0);
+  }
+  to {
+    filter: blur(4px);
+  }
+}

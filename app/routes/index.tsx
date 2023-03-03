@@ -1,4 +1,4 @@
-import Navbar from "~/components/navbar";
+import SlideShow from "~/components/homepage/slideshow";
 import Test from "~/components/test";
 
 export default function Index() {
@@ -6,7 +6,8 @@ export default function Index() {
     <>
       <html>
         <body className="h-auto w-full bg-gray-800">
-          <div>
+          <div className="mt-24">
+            <SlideShow />
             <Test />
           </div>
         </body>
