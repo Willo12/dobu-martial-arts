@@ -1,41 +1,71 @@
 import React, { useState, useEffect } from "react";
-import kidGraphic from "~/assets/jpg/kids.jpg";
-import styles from "./SlideShow.module.css";
+import images from "./images";
 
-const SlideShow = () => {
-  const [isLoaded, setIsLoaded] = useState(true);
+type SlideshowPros = {
+  firstTitle?: string;
+  firstDescription?: string;
+
+  secondTitle?: string;
+  secondDescription?: string;
+
+  thirdTitle?: string;
+  thirdDescription?: string;
+};
+
+const Slideshow = ({
+  firstTitle,
+  firstDescription,
+  secondDescription,
+  secondTitle,
+  thirdDescription,
+  thirdTitle,
+}: SlideshowPros) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsLoaded(false);
-    }, 2000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    const timer = setInterval(() => {
+      setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <>
-      <header className="h-96 w-auto">
-        <div className="relative text-center">
-          <img
-            src={kidGraphic}
-            alt="A Kid doing Martial Arts"
-            className={`${styles.animateBlur} ${
-              isLoaded ? styles.blur0 : styles.blurSm
-            } duration-2000 transition ease-in-out`}
-          />
+    <div className="relative">
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img src={image} className="h-auto w-full" alt="Slideshow" />
 
-          <div className="flex w-40 -translate-y-28 items-center justify-center text-center">
-            <div className="justify-center rounded-md bg-red-200">
-              <h1 className="text-3xl text-white">DoBu Martial Arts</h1>
+          {currentIndex === 0 && (
+            <div className="absolute top-0 left-0 right-0 justify-center bg-gray-800 bg-opacity-50 p-4  text-white">
+              <h2 className="text-2xl font-bold">{`${firstTitle}`}</h2>
+              <p className="text-lg">{`${firstDescription}`}</p>
             </div>
-          </div>
+          )}
+
+          {currentIndex === 1 && (
+            <div className="absolute top-0 left-0 right-0 bg-gray-800 bg-opacity-50 p-4 text-white">
+              <h2 className="text-2xl font-bold">{`${secondTitle}`}</h2>
+              <p className="text-lg">{`${secondDescription}`}</p>
+            </div>
+          )}
+
+          {currentIndex === 2 && (
+            <div className="absolute top-0 left-0 right-0 bg-gray-800 bg-opacity-50 p-4 text-white">
+              <h2 className="text-2xl font-bold">{`${thirdTitle}`}</h2>
+              <p className="text-lg">{`${thirdDescription}`}</p>
+            </div>
+          )}
+
+          {/* Add more components for other images as needed */}
         </div>
-      </header>
-    </>
+      ))}
+    </div>
   );
 };
 
-export default SlideShow;
+export default Slideshow;

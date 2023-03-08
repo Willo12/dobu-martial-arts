@@ -7,7 +7,7 @@ export default function Index() {
       <html>
         <body className="h-auto w-full bg-gray-800">
           <div className="mt-24">
-            <SlideShow />
+            <SlideShow firstDescription="fafafa" />;
             <Test />
           </div>
         </body>

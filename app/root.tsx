@@ -38,10 +38,12 @@ export default function App() {
       </head>
       <body className="h-full">
         <Navbar />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        <div className="mt-16">
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </div>
       </body>
     </html>
   );

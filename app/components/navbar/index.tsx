@@ -11,7 +11,7 @@ type NavbarProps = {
 const Navbar = ({ className }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  let threshold = 500;
+  let threshold = 200;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +21,13 @@ const Navbar = ({ className }: NavbarProps) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    window.history.pushState({}, "", event.currentTarget.href);
+  };
 
   // DOM
   return (
