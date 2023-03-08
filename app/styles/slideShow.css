@@ -1,0 +1,14 @@
+@keyframes blur {
+  0% {
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(12px);
+  }
+}
+
+.animate-blur {
+  animation-name: blur;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+}

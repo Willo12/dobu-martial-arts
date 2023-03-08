@@ -1,23 +1,53 @@
-import { Link } from "@remix-run/react";
 import logo from "~/assets/png/db-logo.png";
 import NavabarLink from "./NavbarLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Navbar = () => {
+type NavbarProps = {
+  className?: string;
+  threshold?: number;
+};
+
+// Functionality
+const Navbar = ({ className }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  let threshold = 200;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > threshold);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    window.history.pushState({}, "", event.currentTarget.href);
+  };
+
+  // DOM
   return (
-    <header className="bg-gray-900 px-4 py-3 md:flex md:justify-between md:justify-items-center md:px-52">
-      <div className="flex items-center justify-between ">
-        <div className="">
+    <header
+      className={`fixed transition-all duration-300 ${
+        isScrolled ? "-translate-y-full" : "translate-y-0"
+      } bg-gray-900 px-4 py-3 md:flex md:justify-between md:justify-items-center md:px-52 ${className}`}
+      style={{ position: "fixed", top: 0, width: "100%", zIndex: 1 }}
+    >
+      <div className=" flex items-center justify-between ">
+        <div>
           <a href="/">
             <img
-              className="h-20 w-auto"
+              className="mr-20 h-20 w-auto md:h-24"
               src={logo}
               alt="Dobu Martial Arts Gym"
             />
           </a>
         </div>
-        <div className=" md:hidden">
+        <div className=" justify-items-end md:hidden">
           <NavabarLink
             url="/membership"
             classname="border rounded-xl w-24 text-center"
@@ -47,20 +77,38 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div
-        className={`px-2 pt-2 pb-4 ${
-          isOpen ? "block" : "hidden"
-        } md:flex md:items-center`}
-      >
-        <NavabarLink url="/">Home</NavabarLink>
-        <NavabarLink url="/about">About us</NavabarLink>
-        <NavabarLink url="/classes">Classes</NavabarLink>
-        <NavabarLink
-          url="/membership"
-          classname="md:border md:rounded-xl md:w-24 md:text-center  hidden sm:block"
+      <div className="md:block">
+        <div className="mr-6 hidden items-baseline justify-end md:visible md:flex">
+          <NavabarLink url="/" classname="text-sm md:visible ">
+            Timetable
+          </NavabarLink>
+          <NavabarLink url="/" classname="text-sm md:visible">
+            Contact us
+          </NavabarLink>
+        </div>
+
+        <div
+          className={`px-2 pt-2 pb-2 ${
+            isOpen ? "block" : "hidden"
+          } md:flex md:items-center`}
         >
-          Login
-        </NavabarLink>
+          <NavabarLink url="/">Home</NavabarLink>
+          <NavabarLink url="/classes">Classes</NavabarLink>
+          <NavabarLink url="/kids">Kids</NavabarLink>
+          <NavabarLink url="/" classname="md:hidden">
+            Timetable
+          </NavabarLink>
+          <NavabarLink url="/" classname="md:hidden">
+            Contact us
+          </NavabarLink>
+          <NavabarLink url="/about/about">About us</NavabarLink>
+          <NavabarLink
+            url="/membership"
+            classname="md:border md:rounded-xl md:w-24 md:text-center  hidden sm:block"
+          >
+            Login
+          </NavabarLink>
+        </div>
       </div>
     </header>
   );
