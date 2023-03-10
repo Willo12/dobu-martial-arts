@@ -1,5 +1,6 @@
 import instructorGraphic from "~/assets/jpg/martial-arts-instructor.jpg";
 import secondInstructorGraphic from "~/assets/jpg/second-instructor.jpg";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 type CardProps = {
   fName: string;
@@ -43,18 +44,30 @@ const Card = ({
             <h1 className="font-serif">{price} per Session</h1>
           </div>
           <div className="mt-6 flex h-16 w-64 items-center justify-center md:h-56 md:w-full">
-            <button
+            <div
               className="mb-1 flex h-9 w-56 items-center justify-center rounded-sm
             bg-green-700 text-white transition-all last-of-type:mb-0 hover:scale-105
             hover:cursor-pointer hover:bg-green-900 md:h-16 md:w-96 md:rounded-md"
             >
-              Manage Membership
-            </button>
+              <MembershipIcon
+                icon={<AiOutlineShoppingCart size={20} />}
+                className="mr-2"
+              />
+              <button className="mr-4">Manage Membership</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
+};
+type iconProps = {
+  icon: any;
+  className?: string;
+};
+
+const MembershipIcon = ({ icon, className }: iconProps) => {
+  return <div className={`membership-icon ${className}`}>{icon}</div>;
 };
 
 export default Card;

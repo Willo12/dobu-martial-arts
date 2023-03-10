@@ -1,6 +1,9 @@
 import logo from "~/assets/png/db-logo.png";
 import NavabarLink from "./NavbarLink";
 import { useState, useEffect } from "react";
+import { useOptionalUser } from "~/utils";
+import { Link } from "@remix-run/react";
+import { Form } from "@remix-run/react";
 
 type NavbarProps = {
   className?: string;
@@ -12,6 +15,8 @@ const Navbar = ({ className }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   let threshold = 200;
+  const user = useOptionalUser();
+  console.log({ user });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,12 +53,30 @@ const Navbar = ({ className }: NavbarProps) => {
           </a>
         </div>
         <div className=" justify-items-end md:hidden">
-          <NavabarLink
+          {/* <NavabarLink
             url="/membership"
             classname="border rounded-xl w-24 text-center"
           >
             Login
-          </NavabarLink>
+          </NavabarLink> */}
+          {user ? (
+            <Form action="/logout" method="post">
+              <button
+                type="submit"
+                className="mt-1 block w-24   border py-2 px-2 text-center font-semibold text-white hover:bg-slate-800 md:ml-4 "
+              >
+                Logout {user.email}
+              </button>
+            </Form>
+          ) : (
+            <Link
+              to="/login"
+              type="button"
+              className="mt-1 block w-24 rounded-xl  border py-2 px-2 text-center font-semibold text-white hover:bg-slate-800 md:ml-4 "
+            >
+              Login
+            </Link>
+          )}
         </div>
         <div className="md:hidden">
           <button
@@ -102,12 +125,25 @@ const Navbar = ({ className }: NavbarProps) => {
             Contact us
           </NavabarLink>
           <NavabarLink url="/about/about">About us</NavabarLink>
-          <NavabarLink
-            url="/membership"
-            classname="md:border md:rounded-xl md:w-24 md:text-center  hidden sm:block"
-          >
-            Login
-          </NavabarLink>
+
+          {user ? (
+            <Form action="/logout" method="post">
+              <button
+                type="submit"
+                className="mt-1 block hidden  py-2 px-2 font-semibold text-white hover:bg-slate-800 sm:block md:ml-4 md:w-24  md:border md:text-center"
+              >
+                Logout {user.email}
+              </button>
+            </Form>
+          ) : (
+            <Link
+              to="/login"
+              type="button"
+              className="mt-1 block hidden rounded py-2 px-2 font-semibold text-white hover:bg-slate-800 sm:block md:ml-4 md:w-24 md:rounded-xl  md:border md:text-center"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </header>
