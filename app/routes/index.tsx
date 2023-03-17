@@ -5,15 +5,16 @@ export default function Index() {
   return (
     <>
       <html>
-        <body className="h-auto w-full bg-gray-800">
-          <div className="mt-24 md:mt-28">
+        <head></head>
+        <body className="h-auto w-full bg-neutral-800">
+          <div className="">
             <SlideShow
-              firstDescription="fafafa"
-              firstTitle="egg"
+              firstTitle="DoBu-Martial Arts"
+              firstDescription="Where MEN grow up"
+              secondTitle="Fun for all sizes"
               secondDescription="this is an image"
-              secondTitle="this is the second image"
-              thirdTitle="this is the third image"
-              thirdDescription="this is an image"
+              thirdTitle="Book Now"
+              thirdDescription="to become the next world champion"
             />
             ;
             <Test />

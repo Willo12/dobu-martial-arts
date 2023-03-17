@@ -24,7 +24,7 @@ const Card = ({
     <div className={`mt-10 mb-10 flex shadow-2xl${className}`}>
       <div className="w-64 rounded-md bg-gray-100 md:flex md:w-96 md:items-center md:justify-center">
         <img
-          className="rounded-t-md md:rounded-l-md"
+          className="rounded-t-md md:rounded-l-md md:rounded-r-none"
           src={image ? image : instructorGraphic}
           alt="Martial Arts Instructor"
         />

@@ -34,6 +34,10 @@ const Navbar = ({ className }: NavbarProps) => {
     window.history.pushState({}, "", event.currentTarget.href);
   };
 
+  type userCardProps = {
+    user: any;
+  };
+
   // DOM
   return (
     <header
@@ -65,7 +69,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 type="submit"
                 className="mt-1 block w-24   border py-2 px-2 text-center font-semibold text-white hover:bg-slate-800 md:ml-4 "
               >
-                Logout {user.email}
+                Logout
               </button>
             </Form>
           ) : (
