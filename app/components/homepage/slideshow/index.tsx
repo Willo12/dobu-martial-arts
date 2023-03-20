@@ -30,7 +30,7 @@ const Slideshow = ({
   }, []);
 
   return (
-    <div className="relative translate-y-24 md:translate-y-20 ">
+    <div className="relative translate-y-24 md:translate-y-14 ">
       {images.map((image, index) => (
         <div
           key={index}
@@ -38,10 +38,10 @@ const Slideshow = ({
             index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="relative h-[310.2px] w-full md:ml-36 md:h-[550px] md:w-[1600px]   md:scale-110  ">
+          <div className=" relative h-[310.2px] w-full md:h-[550px] md:scale-90  ">
             <img
               src={image}
-              className="absolute flex w-full scale-150 transform items-center object-contain md:w-full md:scale-100  md:object-contain"
+              className="absolute flex w-full -translate-y-14 transform items-center object-contain md:-translate-y-0 md:scale-100  md:object-contain"
               alt="Slideshow"
             />
             <div className="">
@@ -55,14 +55,17 @@ const Slideshow = ({
               {currentIndex === 1 && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center  p-4 text-white">
                   <h2 className=" items-center text-3xl font-bold">{`${secondTitle}`}</h2>
+
                   <p className="text-lg">{`${secondDescription}`}</p>
                 </div>
               )}
 
               {currentIndex === 2 && (
                 <div className="absolute inset-0 ml-36  flex  flex-col items-center justify-center   p-4 text-white">
-                  <h2 className="h-28 w-96  justify-center rounded-xl bg-gray-800 bg-opacity-60 text-center text-7xl font-bold">{`${thirdTitle}`}</h2>
-                  <p className="ml-32 mt-10 flex justify-start text-left text-3xl">{`${thirdDescription}`}</p>
+                  <a href="/memberships">
+                    <h2 className="flex items-center justify-center rounded-xl bg-gray-800 bg-opacity-60 text-center font-bold md:ml-64 md:h-28 md:w-96 md:text-7xl">{`${thirdTitle}`}</h2>
+                  </a>
+                  <p className="ml-96 mt-10 flex justify-start text-left md:text-3xl">{`${thirdDescription}`}</p>
                 </div>
               )}
             </div>

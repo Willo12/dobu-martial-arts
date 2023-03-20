@@ -16,6 +16,8 @@ model User {
 
   password Password?
   notes    Note[]
+  memberhip Membership? @relation(fields: [membershipId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  membershipId String?
 }
 
 model Password {
@@ -36,3 +38,16 @@ model Note {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
 }
+
+model Membership{
+  id String @id @default(cuid())
+  level String @unique
+  description String
+  price String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users User[]
+}
+

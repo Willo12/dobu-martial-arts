@@ -9,7 +9,7 @@ import { safeRedirect, validateEmail } from "~/utils";
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
-  if (userId) return redirect("/");
+  if (userId) return redirect("/memberships");
   return json({});
 }
 
@@ -66,7 +66,7 @@ export const meta: MetaFunction = () => {
 
 export default function LoginPage() {
   const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") || "/memberships";
+  const redirectTo = searchParams.get("redirectTo") || "/";
   const actionData = useActionData<typeof action>();
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);

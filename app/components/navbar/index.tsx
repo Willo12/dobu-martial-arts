@@ -34,10 +34,6 @@ const Navbar = ({ className }: NavbarProps) => {
     window.history.pushState({}, "", event.currentTarget.href);
   };
 
-  type userCardProps = {
-    user: any;
-  };
-
   // DOM
   return (
     <header

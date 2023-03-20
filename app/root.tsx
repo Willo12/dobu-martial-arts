@@ -12,6 +12,7 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
@@ -44,6 +45,11 @@ export default function App() {
           <Scripts />
           <LiveReload />
         </div>
+        <Footer
+          title="DoBu is an award winning martial-arts gym which focuses on exploring
+            our client’s inner power."
+          titleDescription="DoBu Martial-Arts"
+        />
       </body>
     </html>
   );

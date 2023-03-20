@@ -1,28 +1,77 @@
-import { LoaderArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { Form, useLoaderData, useSubmit } from "@remix-run/react";
+import MembershipCard from "~/components/MembershipCard";
+import {
+  getMemberships,
+  updateUserMembership,
+} from "~/models/membership.server";
 import { requireUserId } from "~/session.server";
-import { Link } from "@remix-run/react";
-
-import { useOptionalUser } from "~/utils";
+import { useUser } from "~/utils";
+import invariant from "tiny-invariant";
 
 export const loader = async ({ request }: LoaderArgs) => {
   await requireUserId(request);
 
-  return null;
+  return json({ memberships: await getMemberships() });
 };
 
-export default function Index() {
-  const user = useOptionalUser();
-  return (
-    <>
-      <main className=" relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
-        <div className=" relative sm:pb-16 sm:pt-8">
-          <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="sm:roudned-2xl relative shadow-xl sm:overflow-hidden"></div>
-          </div>
+export async function action({ request }: ActionArgs) {
+  const formData = await request.formData();
 
-          <div className="max-w-7xlxl mx-auto py-2 px-4 sm:px-6 lg:px-8"></div>
-        </div>
-      </main>
-    </>
+  const membershipId = formData.get("memberships");
+
+  const userId = formData.get("userId");
+
+  console.log({ membershipId, userId });
+
+  invariant(
+    typeof membershipId === "string",
+
+    "membershipId must be present and a string value"
+  );
+
+  invariant(
+    typeof userId === "string",
+
+    "userId must be present and a string value"
+  );
+
+  await updateUserMembership({ userId, membershipId });
+
+  return null;
+}
+
+export default function Memberships() {
+  const { memberships } = useLoaderData<typeof loader>();
+  const user = useUser();
+  const submit = useSubmit();
+
+  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
+    submit(event.currentTarget, { replace: true });
+  };
+
+  return (
+    <div className="min-h-screen bg-amber-200 p-4">
+      <h1 className="mb-4 text-center font-serif text-4xl font-extrabold text-red-900">
+        Memberships
+      </h1>
+
+      <Form method="post" onChange={(event) => handleChange(event)}>
+        <ul className="mx-auto max-w-xl p-4">
+          {memberships.map(({ id, level, description, price }) => (
+            <MembershipCard
+              key={id}
+              userMembershipId={user.membershipId}
+              userId={user.id}
+              membershipId={id}
+              level={level}
+              description={description}
+              price={price}
+            />
+          ))}
+        </ul>
+      </Form>
+    </div>
   );
 }
