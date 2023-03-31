@@ -6,7 +6,7 @@ export default function Index() {
     <>
       <html>
         <head></head>
-        <body className="h-auto w-full bg-neutral-800">
+        <body className="h-auto w-full bg-gray-800">
           <div className="">
             <SlideShow
               firstTitle="DoBu-Martial Arts"
