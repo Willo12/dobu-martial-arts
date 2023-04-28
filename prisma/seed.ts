@@ -20,7 +20,7 @@ async function seed() {
 
   const intermidiateMembership = await prisma.membership.create({
     data: {
-      level: "Intermidiate",
+      level: "Intermediate",
       description: "1 martial art - 3 sessions per week.",
       price: "£35.00",
     },

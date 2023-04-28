@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import images from "./images";
+import { Parallax } from "react-scroll-parallax";
 
 type SlideshowPros = {
   firstTitle?: string;
@@ -39,24 +40,35 @@ const Slideshow = ({
           }`}
         >
           <div className=" relative h-[310.2px] w-full md:h-[550px] md:scale-90  ">
-            <img
-              src={image}
-              className="absolute flex w-full -translate-y-14 transform items-center object-contain md:-translate-y-0 md:scale-100  md:object-contain"
-              alt="Slideshow"
-            />
+            <Parallax speed={-2}>
+              <img
+                src={image}
+                className="absolute flex w-full -translate-y-14 transform items-center object-contain md:-translate-y-0 md:scale-100  md:object-contain"
+                alt="Slideshow"
+              />
+            </Parallax>
             <div className="">
               {currentIndex === 0 && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center  p-4 text-white">
-                  <h2 className="items-center text-3xl font-bold">{`${firstTitle}`}</h2>
-                  <p className="text-lg">{`${firstDescription}`}</p>
+                  <div className="-translate-y-14 justify-center bg-black bg-opacity-70 shadow-md lg:translate-y-0">
+                    <div className="px-5">
+                      <h2 className="items-center text-3xl font-bold">{`${firstTitle}`}</h2>
+                      <p className="text-center text-lg">{`${firstDescription}`}</p>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {currentIndex === 1 && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center  p-4 text-white">
-                  <h2 className=" items-center text-3xl font-bold">{`${secondTitle}`}</h2>
-
-                  <p className="text-lg">{`${secondDescription}`}</p>
+                  <div className="-translate-y-14  justify-center shadow-md  lg:translate-y-0">
+                    <div className="bg-black bg-opacity-70">
+                      <div className="px-5 ">
+                        <h2 className=" items-center  text-3xl font-bold ">{`${secondTitle}`}</h2>
+                        <p className="text-center text-lg">{`${secondDescription}`}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
