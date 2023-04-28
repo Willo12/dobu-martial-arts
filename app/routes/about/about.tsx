@@ -2,6 +2,13 @@ import Navbar from "~/components/navbar";
 import Card from "~/components/card";
 import Description from "~/components/about/description";
 import Footer from "~/components/footer";
+import { MetaFunction } from "@remix-run/server-runtime";
+
+export const meta: MetaFunction = () => ({
+  title: "About DoBu",
+  description:
+    "What is DoBu martial arts about? Who are our instructors? We have a handful of experienced and well trained martial art instructors.",
+});
 
 export default function About() {
   return (

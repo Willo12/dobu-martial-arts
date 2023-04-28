@@ -13,6 +13,7 @@ import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "./session.server";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
@@ -38,18 +39,20 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full overflow-x-hidden">
-        <Navbar />
-        <div className="mt-16">
-          <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
-        </div>
-        <Footer
-          title="DoBu is an award winning martial-arts gym which focuses on exploring
-            our client’s inner power."
-          titleDescription="DoBu Martial-Arts"
-        />
+        <ParallaxProvider>
+          <Navbar />
+          <div className="mt-16">
+            <Outlet />
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
+          </div>
+          <Footer
+            title="DoBu is an award winning martial-arts gym which focuses on exploring
+          our client’s inner power."
+            titleDescription="DoBu Martial-Arts"
+          />
+        </ParallaxProvider>
       </body>
     </html>
   );

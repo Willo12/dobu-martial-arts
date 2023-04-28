@@ -122,7 +122,7 @@ const Navbar = ({ className }: NavbarProps) => {
           <NavabarLink url="/">Home</NavabarLink>
           <NavabarLink url="/classes">Classes</NavabarLink>
           <NavabarLink url="/kids">Kids</NavabarLink>
-          <NavabarLink url="/" classname="md:hidden">
+          <NavabarLink url="/timetable" classname="md:hidden">
             Timetable
           </NavabarLink>
           <NavabarLink url="/" classname="md:hidden">
