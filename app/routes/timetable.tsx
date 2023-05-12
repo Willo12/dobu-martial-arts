@@ -5,8 +5,7 @@ export default function Timetable() {
   return (
     <>
       <div className="bg-gray-800">
-        <div className="w-full ">
-          <Test />
+        <div className="h-auto w-full  ">
           <h1 className="text-center text-3xl text-white">Timetable</h1>
         </div>
         <TimetableGrid />

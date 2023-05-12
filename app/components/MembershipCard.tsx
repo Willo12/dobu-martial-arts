@@ -20,7 +20,7 @@ export default function MembershipCard({
   return (
     <label
       htmlFor={membershipId}
-      className="mb-4 block rounded-lg bg-white p-4 text-center shadow-lg transition-all last-of-type:mb-0 hover:scale-105 hover:cursor-pointer"
+      className="mx-1 mb-4 block rounded-lg bg-white p-4 text-center shadow-lg transition-all last-of-type:mb-0 hover:scale-105 hover:cursor-pointer"
     >
       <input type="hidden" name="userId" value={userId} />
 
@@ -31,7 +31,7 @@ export default function MembershipCard({
         value={membershipId}
         defaultChecked={userMembershipId === membershipId}
       />
-      <li className="mb-4 rounded-lg bg-white p-4 text-center shadow-lg transition-all last-of-type:mb-0 hover:scale-105 hover:cursor-pointer">
+      <li className="mb-4 rounded-lg bg-white p-4 text-center shadow-lg transition-all last-of-type:mb-0 hover:scale-105 hover:cursor-pointer md:mx-10 md:h-80 md:w-48">
         <h2 className="mb-4 font-serif text-2xl font-extrabold tracking-wide text-green-900">
           {level}
         </h2>

@@ -52,26 +52,32 @@ export default function Memberships() {
   };
 
   return (
-    <div className="min-h-screen bg-amber-200 p-4">
-      <h1 className="mb-4 text-center font-serif text-4xl font-extrabold text-red-900">
-        Memberships
-      </h1>
+    <div className=" bg-gray-800 p-4">
+      <div className="mt-16 md:mt-28">
+        <div className="mx-8 flex justify-center  bg-rose-900 lg:mx-40">
+          <h1 className=" mx-1 my-2 text-center text-4xl text-white lg:my-4 lg:text-6xl">
+            Membership{" "}
+          </h1>
+        </div>
 
-      <Form method="post" onChange={(event) => handleChange(event)}>
-        <ul className="mx-auto max-w-xl p-4">
-          {memberships.map(({ id, level, description, price }) => (
-            <MembershipCard
-              key={id}
-              userMembershipId={user.membershipId}
-              userId={user.id}
-              membershipId={id}
-              level={level}
-              description={description}
-              price={price}
-            />
-          ))}
-        </ul>
-      </Form>
+        <Form method="post" onChange={(event) => handleChange(event)}>
+          <div className="h-full ">
+            <ul className="mx-auto max-w-xl items-center justify-center  p-4 md:flex">
+              {memberships.map(({ id, level, description, price }) => (
+                <MembershipCard
+                  key={id}
+                  userMembershipId={user.membershipId}
+                  userId={user.id}
+                  membershipId={id}
+                  level={level}
+                  description={description}
+                  price={price}
+                />
+              ))}
+            </ul>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import logo from "~/assets/png/db-logoUpdated.png";
+import logo from "~/assets/png/db-logo2.png";
 import NavabarLink from "./NavbarLink";
 import { useState, useEffect } from "react";
 import { useOptionalUser } from "~/utils";
@@ -50,7 +50,7 @@ const Navbar = ({ className }: NavbarProps) => {
         <div>
           <a href="/">
             <img
-              className="mr-20 h-20 w-auto md:h-28"
+              className="mr-20 h-20 w-auto translate-y-3 scale-150 md:h-28"
               src={logo}
               alt="Dobu Martial Arts Gym"
             />
@@ -106,9 +106,10 @@ const Navbar = ({ className }: NavbarProps) => {
       </div>
       <div className="md:block">
         <div className="mr-6 hidden items-baseline justify-end md:visible md:flex">
-          <NavabarLink url="/" classname="text-sm md:visible ">
+          <NavabarLink url="/timetable" classname="text-sm md:visible ">
             Timetable
           </NavabarLink>
+          <NavabarLink url="/memberships">Memberships</NavabarLink>
           <NavabarLink url="/" classname="text-sm md:visible">
             Contact us
           </NavabarLink>
@@ -128,7 +129,7 @@ const Navbar = ({ className }: NavbarProps) => {
           <NavabarLink url="/" classname="md:hidden">
             Contact us
           </NavabarLink>
-          <NavabarLink url="/about/about">About us</NavabarLink>
+          <NavabarLink url="/about">About us</NavabarLink>
 
           {user ? (
             <Form action="/logout" method="post">

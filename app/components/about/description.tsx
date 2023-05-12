@@ -7,6 +7,9 @@ type DescriptionProps = {
   headingClassName?: string;
   paragraphClassName?: string;
   className?: string;
+  Links?: string;
+  LinkRef?: string;
+  LinkClasses?: string;
 };
 
 const Description = ({
@@ -18,6 +21,9 @@ const Description = ({
   headingClassName,
   paragraphClassName,
   className,
+  Links,
+  LinkRef,
+  LinkClasses,
 }: DescriptionProps) => {
   return (
     <div className="mx-10 h-[720px] shadow-md lg:shadow-none">
@@ -42,6 +48,9 @@ const Description = ({
             {description1 && (
               <p className="mx-8   mb-3 mt-3 text-lg text-gray-400 lg:text-3xl">
                 {description1}
+                <a className={LinkClasses} href={LinkRef}>
+                  {Links}
+                </a>
               </p>
             )}
           </div>
