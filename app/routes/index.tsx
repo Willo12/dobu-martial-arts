@@ -21,7 +21,7 @@ export default function Index() {
               firstTitle="DoBu-Martial Arts"
               firstDescription="Where MEN grow up"
               secondTitle="Fun for all sizes"
-              secondDescription="this is an image"
+              secondDescription="Easy, fun and exciting classes for your children!"
               thirdTitle="Book Now"
               thirdDescription="to become the next world champion"
             />
