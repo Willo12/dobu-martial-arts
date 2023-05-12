@@ -130,6 +130,7 @@ const Navbar = ({ className }: NavbarProps) => {
             Contact us
           </NavabarLink>
           <NavabarLink url="/about">About us</NavabarLink>
+          <NavabarLink url="/memberships">Memberships</NavabarLink>
 
           {user ? (
             <Form action="/logout" method="post">
